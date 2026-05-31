@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+compose*.yml
+.dockerignore
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
