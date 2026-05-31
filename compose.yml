@@ -37,6 +37,7 @@ services:
       WORDPRESS_NONCE_SALT: ${WP_NONCE_SALT}
     volumes:
       - wp_html:/var/www/html
+      - ./wordpress/mu-plugins:/var/www/html/wp-content/mu-plugins:ro
     depends_on:
       db:
         condition: service_healthy

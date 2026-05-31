@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
 
-# Pin to 3.27.5 — Elementor 4.x has a PHP fatal error on activation (ally-dashboard-widget)
-ELEMENTOR_VERSION="3.27.5"
+ELEMENTOR_VERSION="4.1.1"
 
 echo "[wp-setup] Waiting for WordPress files..."
 until [ -f /var/www/html/wp-load.php ]; do
