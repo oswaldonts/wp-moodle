@@ -54,6 +54,7 @@ services:
       WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD}
     volumes:
       - wp_html:/var/www/html
+      - ./wordpress/mu-plugins:/var/www/html/wp-content/mu-plugins:ro
       - ./wordpress/setup.sh:/setup.sh:ro
     user: root
     entrypoint: ["/bin/sh", "/setup.sh"]

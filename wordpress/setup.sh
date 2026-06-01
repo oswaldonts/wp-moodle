@@ -2,6 +2,7 @@
 set -e
 
 ELEMENTOR_VERSION="4.1.1"
+EDWISER_BRIDGE_VERSION="4.3.4"
 
 echo "[wp-setup] Waiting for WordPress files..."
 until [ -f /var/www/html/wp-load.php ]; do
@@ -28,9 +29,13 @@ else
 fi
 
 echo "[wp-setup] Fixing wp-content permissions..."
-chown -R 33:33 /var/www/html/wp-content
+chown -R 33:33 /var/www/html/wp-content/plugins
+chown -R 33:33 /var/www/html/wp-content/themes
+chown -R 33:33 /var/www/html/wp-content/uploads
+mkdir -p /var/www/html/wp-content/upgrade && chown -R 33:33 /var/www/html/wp-content/upgrade
 
 echo "[wp-setup] Installing plugins..."
 wp plugin install elementor --version="${ELEMENTOR_VERSION}" --activate --path=/var/www/html --allow-root
+wp plugin install edwiser-bridge --version="${EDWISER_BRIDGE_VERSION}" --activate --path=/var/www/html --allow-root
 
 echo "[wp-setup] Done."
