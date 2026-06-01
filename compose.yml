@@ -39,6 +39,8 @@ services:
     volumes:
       - wp_html:/var/www/html
       - ./wordpress/mu-plugins:/var/www/html/wp-content/mu-plugins:ro
+    extra_hosts:
+      - "localhost:host-gateway"
     depends_on:
       db:
         condition: service_healthy
