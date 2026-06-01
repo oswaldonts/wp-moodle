@@ -36,6 +36,7 @@ if [ "${DB_INSTALLED}" = "0" ]; then
     --adminemail='${MOODLE_ADMIN_EMAIL}' \
     --non-interactive \
     --agree-license"
+  sed -i "s/require_once(__DIR__/\$CFG->reverseproxy = true;\nrequire_once(__DIR__/" ${MOODLE_DIR}/config.php
 else
   echo "[moodle] Existing install detected — generating config.php..."
   su -s /bin/bash www-data -c "cat > ${MOODLE_DIR}/config.php << 'CONFIGEOF'
@@ -55,6 +56,7 @@ global \$CFG;
 \$CFG->dataroot  = '/var/moodledata';
 \$CFG->admin     = 'admin';
 \$CFG->directorypermissions = 02777;
+\$CFG->reverseproxy = true;
 require_once(__DIR__ . '/lib/setup.php');
 CONFIGEOF"
 fi

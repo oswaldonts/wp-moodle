@@ -35,6 +35,7 @@ services:
       WORDPRESS_SECURE_AUTH_SALT: ${WP_SECURE_AUTH_SALT}
       WORDPRESS_LOGGED_IN_SALT: ${WP_LOGGED_IN_SALT}
       WORDPRESS_NONCE_SALT: ${WP_NONCE_SALT}
+      WORDPRESS_CONFIG_EXTRA: "define('WP_HTTP_BLOCK_EXTERNAL', false);"
     volumes:
       - wp_html:/var/www/html
       - ./wordpress/mu-plugins:/var/www/html/wp-content/mu-plugins:ro
