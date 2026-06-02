@@ -37,5 +37,6 @@ mkdir -p /var/www/html/wp-content/upgrade && chown -R 33:33 /var/www/html/wp-con
 echo "[wp-setup] Installing plugins..."
 wp plugin install elementor --version="${ELEMENTOR_VERSION}" --activate --path=/var/www/html --allow-root
 wp plugin install edwiser-bridge --version="${EDWISER_BRIDGE_VERSION}" --activate --path=/var/www/html --allow-root
+wp plugin activate aquinas-mailer --path=/var/www/html --allow-root || true
 
 echo "[wp-setup] Done."
